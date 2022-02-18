@@ -31,6 +31,7 @@ import {
 } from "../../search/components";
 import { Image } from "../../components/Image"; // common components
 import { DashboardResultView, DashboardSearchLayoutHOC } from "./base";
+import { Truncate } from "../../components/Truncate";
 
 function ResultsGridItemTemplate({ result, index }) {
   return (
@@ -38,9 +39,14 @@ function ResultsGridItemTemplate({ result, index }) {
       <Card.Content>
         <Card.Header>{result.metadata.title}</Card.Header>
         <Card.Description>
-          <div
-            dangerouslySetInnerHTML={{ __html: result.metadata.description }}
-          />
+          <Truncate lines={2}>
+            {" "}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: result.metadata.description,
+              }}
+            />
+          </Truncate>
         </Card.Description>
       </Card.Content>
     </Card>
@@ -96,9 +102,14 @@ export function CommunitiesResultsItemTemplate({ result, index }) {
           </a>
         )}
         <Item.Meta>
-          <div
-            dangerouslySetInnerHTML={{ __html: result.metadata.description }}
-          />
+          <Truncate lines={2}>
+            {" "}
+            <div
+              dangerouslySetInnerHTML={{
+                __html: result.metadata.description,
+              }}
+            />
+          </Truncate>
         </Item.Meta>
       </Item.Content>
     </Item>
